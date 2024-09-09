@@ -6,7 +6,10 @@ async fn main() {
     let listner = TcpListener::bind("127.0.0.1:6379").await.unwrap();
     loop {
         let (socket, _) = listner.accept().await.unwrap();
-        process(socket).await;
+        tokio::spawn(async move {
+            process(socket).await;
+        });
+        //process(socket).await;
     }
 }
 
