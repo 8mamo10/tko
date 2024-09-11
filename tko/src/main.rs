@@ -12,7 +12,6 @@ async fn main() {
         tokio::spawn(async move {
             process(socket).await;
         });
-        //process(socket).await;
     }
 
     //let out = handle.await.unwrap();
