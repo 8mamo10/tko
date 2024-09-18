@@ -5,6 +5,7 @@ use std::sync::{Arc, Mutex};
 use tokio::net::{TcpListener, TcpStream};
 
 type DB = Arc<Mutex<HashMap<String, Bytes>>>;
+type SharedDb = Arc<Vec<Mutex<HashMap<String, Vec<u8>>>>>;
 
 #[tokio::main]
 async fn main() {
