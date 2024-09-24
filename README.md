@@ -18,4 +18,5 @@ $ cargo run
 
 ```
 $ cargo run --example hello-redis
+$ cargo run --example client
 ```
