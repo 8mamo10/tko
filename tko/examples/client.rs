@@ -46,7 +46,10 @@ async fn main() {
             key: "hello".to_string(),
             resp: resp_tx,
         };
-        tx.send(cmd).await.unwrap();
+        if tx.send(cmd).await.is_err() {
+            eprintln!("connection task shutdown");
+            return;
+        };
         let res = resp_rx.await;
         println!("GOT = {:?}", res);
     });
@@ -57,7 +60,10 @@ async fn main() {
             val: b"bar".to_vec(),
             resp: resp_tx,
         };
-        tx2.send(cmd).await.unwrap();
+        if tx2.send(cmd).await.is_err() {
+            eprintln!("connection task shutdown");
+            return;
+        }
         let res = resp_rx.await;
         println!("GOT = {:?}", res);
     });
