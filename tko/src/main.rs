@@ -45,7 +45,7 @@ async fn process(socket: TcpStream, db: DB) {
                     Frame::Null
                 }
             }
-            cmd => panic!("umimplemented {:?}", cmd),
+            cmd => panic!("unimplemented {:?}", cmd),
         };
         connection.write_frame(&response).await.unwrap();
     }
