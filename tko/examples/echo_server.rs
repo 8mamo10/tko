@@ -13,7 +13,7 @@ async fn main() -> io::Result<()> {
                 match socket.read(&mut buf).await {
                     Ok(0) => return,
                     Ok(n) => {
-                        println!("Received: {}", n);
+                        println!("Received: {} - {:?}", n, &buf[..n]);
                         if socket.write_all(&buf[..n]).await.is_err() {
                             return;
                         }
