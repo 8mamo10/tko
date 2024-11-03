@@ -9,7 +9,7 @@ async fn main() -> io::Result<()> {
     let (mut rd, mut wr) = io::split(socket);
 
     // write data in background
-    let write_task = tokio::spawn(async move {
+    let _write_task = tokio::spawn(async move {
         wr.write_all(b"hello\r\n").await?;
         wr.write_all(b"world\r\n").await?;
 
