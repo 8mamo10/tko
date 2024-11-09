@@ -27,4 +27,8 @@ impl Connection {
         }
     }
     pub async fn write_frame(&mut self, frame: &Frame) -> Result {}
+
+    fn parse_frame(&mut self) -> Result<Option<Frame>> {
+        Ok(None)
+    }
 }
